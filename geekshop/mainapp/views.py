@@ -1,6 +1,8 @@
 import json
-from geekshop.settings import BASE_DIR
+from django.conf import settings
 from django.shortcuts import render
+
+from mainapp.models import Product, ProductCategory
 
 # Create your views here.
 
@@ -13,38 +15,44 @@ social_links = [
 
 
 def main(request):
+
+    products = Product.objects.all()[:4]
+
     context = {
             'title': "главная",
             'social_links': social_links,
+            'products': products,
             }
+
     return render(request, 'mainapp/index.html', context)
 
-def products(request):
-    links_menu = [
-        {'href': 'products_all', 'name': 'все'},
-        {'href': 'products_home', 'name': 'дом'},
-        {'href': 'products_office', 'name': 'офис'},
-        {'href': 'products_modern', 'name': 'модерн'},
-        {'href': 'products_classic', 'name': 'классика'},
-    ]
+def products(request, pk=None):
+
+    products = Product.objects.all()[:4]
+    links_menu = ProductCategory.objects.all()
+
     context = {
             'title': "продукты",
             'links_menu': links_menu,
             'social_links': social_links,
+            'products': products,
             }
+
     return render(request, 'mainapp/products.html', context)
 
 def contact(request):
-    file_path = BASE_DIR / 'mainapp' / 'templates' / 'mainapp' / 'data' / 'locations.json'
+    file_path = settings.BASE_DIR / 'static' / 'data' / 'locations.json'
+    
+    locations = []
 
     with open(file_path, encoding='utf8') as f:
-        data = json.load(f)
+        locations = json.load(f)
 
-        locations = data['locations']
 
     context = {
             'title': "контакты",
             'social_links': social_links,
             'locations': locations,
             }
+
     return render(request, 'mainapp/contact.html', context)

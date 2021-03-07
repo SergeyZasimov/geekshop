@@ -1,0 +1,21 @@
+[
+    {
+        "city": "Москва",
+        "phone": "+7-495-888-7788",
+        "email": "info@geekshop.ru",
+        "address": "В пределах МКАД"
+    },
+    {
+        "city": "Самара",
+        "phone": "+7-888-888-9999",
+        "email": "info@geekshop-samara.ru",
+        "address": "В пределах города"
+    },
+    {
+        "city": "Пермь",
+        "phone": "+7-888-999-8888",
+        "email": "info@geekshop-perm.ru",
+        "address": "В некоторых районах"
+    }
+]
+
