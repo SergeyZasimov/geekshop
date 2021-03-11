@@ -1,0 +1,56 @@
+[
+    {
+        "category": "стулья",
+        "name": "комфорт",
+        "image": "products_images/product-1.jpg",
+        "short_desc": "комфортный стул",
+        "description": "подойдет для просмотра фильмов",
+        "price": "2989.50",
+        "quantity": "17"
+    },
+    {
+        "category": "стулья",
+        "name": "эконом",
+        "image": "products_images/product-2.jpg",
+        "short_desc": "простой стул",
+        "description": "для тех кто привык экономить",
+        "price": "1500.00",
+        "quantity": "30"
+    },
+    {
+        "category": "диваны",
+        "name": "комфорт",
+        "image": "products_images/product-3.jpg",
+        "short_desc": "комфортный диван",
+        "description": "подойдет для дома",
+        "price": "2000.00",
+        "quantity": "12"
+    },
+    {
+        "category": "диваны",
+        "name": "эконом",
+        "image": "products_images/product-4.jpg",
+        "short_desc": "диван эконом класса",
+        "description": "подойдет для простых офисов",
+        "price": "2500.00",
+        "quantity": "30"
+    },
+    {
+        "category": "кресла",
+        "name": "комфорт",
+        "image": "products_images/product-5.jpg",
+        "short_desc": "элегантное кресло",
+        "description": "подойдет для просмотра фильмов",
+        "price": "5989.50",
+        "quantity": "17"
+    },
+    {
+        "category": "кресла",
+        "name": "премиум",
+        "image": "products_images/product-6.jpg",
+        "short_desc": "премийльное крело",
+        "description": "для тех кто не привык экономить",
+        "price": "10500.00",
+        "quantity": "3"
+    }
+]

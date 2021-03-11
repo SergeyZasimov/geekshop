@@ -16,7 +16,7 @@ social_links = [
 
 def main(request):
 
-    products = Product.objects.all()[:4]
+    products = Product.objects.all()[:3]
 
     context = {
             'title': "главная",
