@@ -34,6 +34,19 @@ class ShopUserRegisterForm(UserCreationForm):
             raise forms.ValidationError('Только для совершеннолетних!')
         return data
 
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name']
+        username = self.cleaned_data['username']
+
+        for letter in first_name:
+            if letter in digits:
+                raise forms.ValidationError('Только буквы!')
+
+        if first_name not in username:
+            raise forms.ValidationError('Имя пользователя не содержит Имя!')
+
+        return first_name
+
 
 class ShopUserEditForm(UserChangeForm):
     class Meta:
