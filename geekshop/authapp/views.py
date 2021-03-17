@@ -6,8 +6,10 @@ from django.shortcuts import render, HttpResponseRedirect
 # Create your views here.
 
 def login(request):
-    print(request.POST)
-    login_form = ShopUserLoginForm(data=request.POST)
+    
+    login_form = ShopUserLoginForm(data=request.POST or None)
+
+    next = request.GET.get('next', None)
     
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
@@ -15,11 +17,14 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user and user.is_active:
             auth.login(request, user)
+            if 'next' in request.POST.keys():
+                return HttpResponseRedirect(request.POST['next'])
             return HttpResponseRedirect(reverse('main'))
 
     content = {
         'title': 'вход',
         'login_form': login_form,
+        'next': next,
     }
     
     return render(request, 'authapp/login.html', content)

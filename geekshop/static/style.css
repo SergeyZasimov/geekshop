@@ -92,11 +92,11 @@ html, body {
 
 .basket-count {
 	display: block;
-	width: 23px;
+	width: 60px;
 	height: 23px; 	
 	position: absolute;
-	top: 65px;
-	left: 1230px;
+	top: 60px;
+	left: 1250px;
 	color: #8c8c8c;
 	font-size: 14px;
 	font-weight: 700;
@@ -935,6 +935,10 @@ td:first-child {
 	float: left;
 	margin-right: 10px;
 }
+
+.slider-control .block img {
+	height: 70px;
+	}
 .slider-control a .text {
 	display: none;
 	height: 70px;
