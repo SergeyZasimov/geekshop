@@ -83,11 +83,26 @@ html, body {
 .basket {
 	display: block;
 	width: 23px;
-	height: 23PX; 	
+	height: 23px; 	
 	background-image: url(img/basket.png);
 	position: absolute;
 	top: 63px;
 	left: 1210px;
+}
+
+.basket-count {
+	display: block;
+	width: 23px;
+	height: 23px; 	
+	position: absolute;
+	top: 65px;
+	left: 1230px;
+	color: #8c8c8c;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: right;
+	text-transform: uppercase;
+	text-decoration: none;
 }
 
 .clearfix:after {
@@ -258,13 +273,16 @@ html, body {
 .tab-content {
 	margin-top: 50px;
 	display: flex;
-	justify-content: space-between;
+	flex-flow: row wrap;
+	justify-content: space-around;
 	margin-bottom: 120px;
 }
 .tab-content .block {
 	height: 270px;
 	width: 270px;
 	position: relative;
+	margin-left: 100px;
+	margin-top: 20px;
 }
 .tab-content a .text {
 	display: none;

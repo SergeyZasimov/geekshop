@@ -9,7 +9,11 @@
 					{% include 'mainapp/includes/inc_main_menu.html' %}
 				</ul>
 				<a href="#" class="search"></a>
-                <a href="#" class="basket"></a>
+				<a href="{% url 'basket:view' %}" class="basket">
+					<span>
+						{% if basket %}{{ basket|length }}{% endif %}
+					</span>
+				</a>
 			</div>
 			<div class="text-slider">
 				<h3 class="green">тенденции</h3>
@@ -17,7 +21,7 @@
 				<p>Новый уровень комфорта. Отличные характеристики.</p>
 				<a href="#"
 					class="button-order">заказать
-					<img src="{% static 'css/img/arrow.png' %}" alt=""></a>
+					<img src="{% static 'img/arrow.png' %}" alt=""></a>
 			</div>	
 			<div class="navi">
 				<a href="#"></a><a href="#"></a><a href="#"></a>
@@ -28,25 +32,26 @@
 			<div class="featured-menu">
 					<a class="active" href="#">Популярные</a><a href="#">Новинки</a>
 			</div>
-			<a class="explore" href="#">показать все <img src="{% static 'css/img/arrow.png' %}" alt=""></a>
+			<a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
 			<div class="clearfix">
 			</div>
+
 			<div class="tab-content">
 				{% for product in products %}
-					<div class="block">
+				<div class="block">
 						<a href="#">
-							<img src="/media/{{ product.image}}" alt="{{ product.name }}"> 
-							<div class="text">
-								<img src="{% static 'css/img/icon-hover.png' %}" alt="{{ product.name }}">
-								<h4>{{ product.name }}</h4>
-								<p>{{ product.short_desc }}</p>
-							</div> 
+								<img src="/media/{{ product.image}}" alt="{{ product.name }}"> 
+								<div class="text">
+										<img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
+										<h4>{{ product.name }}</h4>
+										<p>{{ product.short_desc }}</p>
+								</div>
 						</a>
-					</div>
+				</div>
 				{% endfor %}
-		</div>
+		  </div>
 		
-		<div class="clr"></div>
+		  <div class="clr"></div>
 
-	</div>
+	  </div>
 {% endblock %}

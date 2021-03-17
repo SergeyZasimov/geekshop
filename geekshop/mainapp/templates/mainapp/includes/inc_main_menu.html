@@ -9,7 +9,7 @@
 
 <li>
 	<a href="{% url 'products:products' %}" 
-		{% if 'products' in request.resolver_match.url_name or 'category' in request.resolver_match.url_name %} 
+		{% if request.resolver_match.namespace == 'products' %} 
 		class="active"
 		{% endif %}>
 		продукты
