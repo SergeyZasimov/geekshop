@@ -1,46 +1,55 @@
-<li>
-	<a href="{% url 'main' %}" 
-		{% if request.resolver_match.url_name == 'main' %} 
-		class="active" 
-		{% endif %}>
-		домой
-  	</a>
-</li>
-
-<li>
-	<a href="{% url 'products:products' %}" 
-		{% if request.resolver_match.namespace == 'products' %} 
-		class="active"
-		{% endif %}>
-		продукты
-  	</a>
-</li>
-
-<li>
-  	<a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %} 
-		class="active"
-		{% endif %}>
-		контакты
- 	 </a>
-</li>
-
-{% if user.is_authenticated %}
-<li>
-	<a href="{% url 'auth:edit' %}">
-		{{ user.first_name|default:"Пользователь" }}
-  	</a>
-</li>
-
-<li>
- 	<a href="{% url 'auth:logout' %}">
-		выход
- 	</a>
-</li>
-
-{% else %}
-<li>
-	<a href="{% url 'auth:login' %}">
-		вход
-  	</a>
-</li>
-{% endif %}
+<div class="header clearfix">
+  <a href="/" class="logo"></a>
+  <ul class="menu">
+		<li>
+			<a href="{% url 'main' %}"
+				{% if request.resolver_match.url_name == 'main' %} 
+				class="active"
+				{% endif %}>
+					домой
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'products:products' %}"
+				{% if request.resolver_match.namespace == 'products' %} 
+				class="active"
+				{% endif %}>
+					продукты
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'contact' %}"
+				{% if request.resolver_match.url_name == 'contact' %} 
+				class="active"
+				{% endif %}>
+					контакты
+			</a>
+		</li>
+		{% if user.is_authenticated %}
+		<li>
+			<a href="{% url 'auth:edit' %}">
+				{{ user.first_name|default:"Пользователь" }}
+			</a>
+		</li>
+		<li>
+		 	<a href="{% url 'auth:logout' %}">
+				выход
+		 	</a>
+		</li>
+		{% else %}
+		<li>
+			<a href="{% url 'auth:login' %}">
+				вход
+		  	</a>
+		</li>
+		{% endif %}
+  </ul>
+  <a href="#" class="search"></a>
+  <a href="{% url 'basket:view' %}" class="basket"></a>
+  <span class="basket-count">
+    {% if basket %}
+      {{ basket.0.total_cost|floatformat:0 }}.руб
+      ({{ basket.0.total_quantity }} шт.)
+    {% endif %}
+  </span>
+</div>

@@ -3,18 +3,7 @@
 
 {% block content %}
 <div class="hero-white">
-  <div class="header clearfix">
-  	<a href="/" class="logo"></a>
-  	<ul class="menu">
-  		{% include 'mainapp/includes/inc_main_menu.html' %}
-  	</ul>
-  	<a href="#" class="search"></a>
-  	<a href="{% url 'basket:view' %}" class="basket">
-  	</a>
-  	<span class="basket-count">
-  		{{ basket }}
-  	</span>
-  </div>
+	{% include 'mainapp/includes/inc_main_menu.html' %}
 </div>
 
 <div class="details">
@@ -33,7 +22,7 @@
   <div class="tab-content">
   	{% for product in products %}
   	<div class="block">
-      <a href="{% url 'basket:add' product.pk %}">
+      <a href="{% url 'products:product' product.pk %}">
         <img src="/media/{{ product.image}}" alt="{{ product.name }}">
         <div class="text">
           <img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
