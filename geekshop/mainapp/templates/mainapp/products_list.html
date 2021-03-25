@@ -15,6 +15,17 @@
     <div class="title clearfix">
       <h2>
         Категория: "{{ category.name|title }}"
+        <div class="paginator">
+          {% if products.has_previous %}
+          <a href="{% url 'products:page' category.pk products.previous_page_number %}"> < </a>
+          {% endif %}
+          <span class="current">
+            страница {{ products.number }} из {{ products.paginator.num_pages }}
+          </span>
+          {% if products.has_next %}
+          <a href="{% url 'products:page' category.pk products.next_page_number %}"> > </a>
+          {% endif %}
+        </div>
       </h2>
   </div>
     
@@ -23,7 +34,7 @@
   	{% for product in products %}
   	<div class="block">
       <a href="{% url 'products:product' product.pk %}">
-        <img src="/media/{{ product.image}}" alt="{{ product.name }}">
+        <img src="/media/{{ product.image|default:'products_images/default.jpg'}}" alt="{{ product.name }}">
         <div class="text">
           <img src="{% static 'img/icon-hover.png' %}" alt="{{ product.name }}">
           <h4>{{ product.name }}</h4>

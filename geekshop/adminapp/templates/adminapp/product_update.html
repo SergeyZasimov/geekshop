@@ -8,8 +8,14 @@
     <input class="form-control" type="submit" value="сохранить">
   </form>
   <button class="btn btn-round form-control last">
+    {% if object %}
     <a href="{% url 'admin:products' category.pk %}">
-			к списку товаров
+      к списку товаров
     </a>
+    {% else %}
+    <a href="{% url 'admin:products' category %}">
+      к списку товаров
+    </a>
+    {% endif %}
   </button>
 {% endblock %}

@@ -2,26 +2,48 @@
 {% load static %}
 
 {% block content %}
-<div class="product_record {% if not product.is_active %}not_active{% endif %}">
-	<img src="/media/{{ product.image|default:'products_image/default.jpg' }}" alt="{{ product.name }}">
-		<div class="product_name">
-			<p>
-				<strong>{{ product.name|title }}</strong>
-			</p>
-		</div>
+  <div class="product_read">
+    <div class="product_name">
+      Продукт<strong>{{ object.category.name|title }} / 
+                     {{ object.name|title }}</strong> 
+    </div>
+    <img src="/media/{{ object.image|default:'products_images/default.jpg' }}"
+         alt="{{ object.name }}">
     <div class="summary">
       <b>цена</b>
-      <p>{{ product.price }} руб</p>
+      <p>{{ object.price }} руб</p>
       <b>количество</b>
-      <p>{{ product.quantity }}</p>
-      <b>категория</b>
-      <p>{{ product.category }}</p>
+      <p>{{ object.quantity }}</p>
+      <b>в каталоге</b>
+      <p>{% if object.is_active %}да{% else %}нет{% endif %}</p>
+      <p>
+        <button>
+          <a href={% url 'admin:product_update' object.pk %}>
+            редактировать
+          </a>
+        </button>
+      </p>
+      <p>
+        <button>
+          <a href={% url 'admin:product_delete' object.pk %}>
+            удалить
+          </a>
+        </button>
+      </p>
+      <p>
+        <button>
+          <a href={% url 'admin:products' object.category.pk %}>
+            назад
+          </a>
+        </button>
+      </p>
     </div>
     <div class="product_desc">
-      {{ product.short_desc|title }}
+      <b>краткая информация</b>
+      <p>{{ object.short_desc }}</p>
+      <br><br>
+      <b>подробная информация</b>
+      <p>{{ object.description }}</p>
     </div>
-    <div class="product_desc">
-      {{ product.description|title }}
-    </div>
-</div>
+  </div>
 {% endblock %}

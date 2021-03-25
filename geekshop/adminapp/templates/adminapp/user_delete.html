@@ -4,18 +4,18 @@
 
 {% block content %}
   <div class="user_delete">
-    Уверены, что хотите удалить {{ user_to_delete.username }} 
-    {% if user_to_delete.first_name %}
-      ({{ user_to_delete.first_name|title }}</b>
-      {% if user_to_delete.last_name %}
-        {{ user_to_delete.last_name|title }}
+    Уверены, что хотите {% if object.is_active %} удалить {% else %} восстановить {% endif %} <br> <b>{{ object.username }}</b> 
+    {% if object.first_name %}
+      ({{ object.first_name|title }}</b>
+      {% if object.last_name %}
+        {{ object.last_name|title }}
       {% endif %})
     {% endif %}
     ?
-    <form action="{% url 'admin:user_delete' user_to_delete.pk %}"
+    <form action="{% url 'admin:user_delete' object.pk %}"
           method="post">
       {% csrf_token %}
-			{% if user_to_delete.is_active %}
+			{% if object.is_active %}
       	<input class="btn btn-danger" type="submit" value="удалить">
 			{% else %}
       	<input class="btn btn-primary" type="submit" value="восстановить">
