@@ -23,6 +23,7 @@ html, body {
     float:left;
     margin-top: 25px;
     border-radius: 25px;
+    width: 270px;
 }
 
 .product_read .product_name {
@@ -69,8 +70,9 @@ html, body {
 
 .product_delete {
     margin: 50px auto;
-    width: 600px;
+    width: 400px;
     font-size: 150%;
+    text-align: center;
 }
 
 .product_delete .btn {
@@ -86,6 +88,15 @@ html, body {
     text-decoration: none;
 }
 
+.admin_container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.admin_container .paginator {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 .admin_container .menu span {
     margin-left: 10px;
@@ -178,8 +189,9 @@ html, body {
 
 .category_delete {
     margin: 50px auto;
-    width: 600px;
+    width: 400px;
     font-size: 150%;
+    text-align: center;
 }
 
 .category_delete .btn {
@@ -256,8 +268,9 @@ html, body {
 
 .user_delete {
     margin: 50px auto;
-    width: 600px;
+    width: 400px;
     font-size: 150%;
+    text-align: center;
 }
 
 .user_delete .btn {
@@ -295,7 +308,7 @@ html, body {
 }
 
 .user_record {
-    height: 125px;
+    height: 130px;
     margin: 15px auto;
     position: relative;
 }
@@ -373,6 +386,7 @@ html, body {
     top: 20px;
     height: 40px;
     width: 100%;
+    margin-left: 70px;
 }
 
 .admin_menu ul.menu{
@@ -488,7 +502,7 @@ html, body {
     display: block;
     position: relative;
     left: 75px;
-    top: 15px;
+    top: 60px;
     margin-left: 25px;
     color: #555;
     float: left;
