@@ -1,3 +1,5 @@
+from hashlib import md5
+from datetime import datetime
 from string import digits
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
@@ -34,18 +36,13 @@ class ShopUserRegisterForm(UserCreationForm):
             raise forms.ValidationError('Только для совершеннолетних!')
         return data
 
-    def clean_first_name(self):
-        first_name = self.cleaned_data['first_name']
-        username = self.cleaned_data['username']
+    def save(self):
+        user = super().save()
+        user.is_active = False
 
-        for letter in first_name:
-            if letter in digits:
-                raise forms.ValidationError('Только буквы!')
-
-        if first_name not in username:
-            raise forms.ValidationError('Имя пользователя не содержит Имя!')
-
-        return first_name
+        user.activation_key = md5((user.email).encode('utf-8')).hexdigest()
+        user.save()
+        return user
 
 
 class ShopUserEditForm(UserChangeForm):
@@ -67,15 +64,3 @@ class ShopUserEditForm(UserChangeForm):
             raise forms.ValidationError('Только для совершеннолетних!')
         return data
 
-    def clean_first_name(self):
-        first_name = self.cleaned_data['first_name']
-        username = self.cleaned_data['username']
-
-        for letter in first_name:
-            if letter in digits:
-                raise forms.ValidationError('Только буквы!')
-
-        if first_name not in username:
-            raise forms.ValidationError('Имя пользователя не содержит Имя!')
-
-        return first_name

@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
@@ -146,7 +146,8 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['category'] = context['object_list'][0].category
+        category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
+        context['category'] = category
         return context
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
@@ -165,8 +166,6 @@ class ProductCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
-        print(self.kwargs)
         context['category'] = self.kwargs['pk']
         return context
 
