@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, get_object_or_404, reverse
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.utils.decorators import method_decorator
 
 from authapp.models import ShopUser
@@ -126,7 +126,7 @@ class ProductCategoryDeleteView(DeleteView):
 
 
 #Product
-class ProductDetailView(DeleteView):
+class ProductDetailView(DetailView):
     model = Product
     template_name = 'adminapp/product_read.html'
 
