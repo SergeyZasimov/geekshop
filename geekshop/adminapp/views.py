@@ -126,7 +126,7 @@ class ProductCategoryDeleteView(DeleteView):
 
 
 #Product
-class ProductDetailView(DeleteView):
+class ProductDetailView(DetailView):
     model = Product
     template_name = 'adminapp/product_read.html'
 
@@ -146,7 +146,8 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['category'] = context['object_list'][0].category
+        category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
+        context['category'] = category
         return context
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
@@ -165,8 +166,6 @@ class ProductCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
-        print(self.kwargs)
         context['category'] = self.kwargs['pk']
         return context
 
