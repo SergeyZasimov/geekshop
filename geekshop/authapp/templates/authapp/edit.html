@@ -3,7 +3,11 @@
 {% block content %}
 	<form action="{% url 'auth:edit' %}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		{% csrf_token %}
+        <div>
+            <img src="/media/{{ user.avatar }}" alt="аватар">
+        </div>
 		{{ edit_form.as_p }}
+        {{ profile_form.as_p }}
 		<input type="submit" value="сохранить" class="form-control" />
 	</form>
 	<br>
@@ -12,7 +16,4 @@
             на главную
         </a>
     </button>
-    <div>
-        <img src="/media/{{ user.avatar }}" alt="аватар">
-    </div>
 {% endblock %}
