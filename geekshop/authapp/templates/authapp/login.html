@@ -14,4 +14,10 @@
 			зарегестрироваться
 		</a>
 	</button>
+
+	<button class="btn btn-round form-control">
+		<a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+			вход через ВК
+		</a>
+	</button>
 {% endblock %}
