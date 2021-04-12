@@ -10,4 +10,9 @@
 				категории {% if category %} : {{ category.name }} {% endif %}
 			</a>
 	</li>
+	<li><a href="{% url 'adminapp:orders_list' %}"
+				 class="{% if 'order' in request.resolver_match.url_name %}active{% endif %}">
+                Заказы
+			</a>
+	</li>
 </ul>

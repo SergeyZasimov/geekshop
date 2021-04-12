@@ -25,32 +25,46 @@
 					контакты
 			</a>
 		</li>
-		{% if user.is_authenticated %}
+    {% if user.is_authenticated %}
 		<li>
-			<a href="{% url 'auth:edit' %}">
-				{{ user.first_name|default:"Пользователь" }}
-			</a>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="" data-toggle="dropdown">
+                    {{ user.first_name|default:"Пользователь" }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'auth:edit' %}">
+                            Профиль
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordersapp:orders_list' %}">
+                            заказы
+                        </a>
+                    </li>
+                </ul>
+            </div>
 		</li>
 		{% if user.is_superuser %}
-		<li>
-			<a href="{% url 'adminapp:user_read' %}">
-				Админка
-			</a>
-		</li>
-			
-		{% endif %}
+            <li>
+                <a href="{% url 'adminapp:user_read' %}">
+                    Админка
+                </a>
+            </li>
+        {% endif %}
 		<li>
 		 	<a href="{% url 'auth:logout' %}">
 				выход
 		 	</a>
 		</li>
-		{% else %}
+    {% else %}
 		<li>
 			<a href="{% url 'auth:login' %}">
 				вход
 		  	</a>
 		</li>
-		{% endif %}
+    {% endif %}
   </ul>
   <a href="#" class="search"></a>
   <a href="{% url 'basket:view' %}" class="basket"></a>

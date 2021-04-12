@@ -1,0 +1,50 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <table class="table order_list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Пользователь</th>
+                <th>Создан</th>
+                <th>Обновлён</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+                {% if item.is_active %}
+                <tr>
+                    <td class="td1 orders_list">{{ item.pk }}</td>
+                    <td>{{ item.user|title }}</td>
+                    <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <span class="dropdown-toggle" data-toggle="dropdown">
+                                {{ item.get_status_display }}
+                                <span class="caret"></span>
+                            </span>
+                            <ul class="dropdown-menu">
+                            {% for status in item.ORDER_STATUS_CHOICES %}
+                                <li>
+                                    <a href="{% url 'ordersapp:get_status' item.pk  status %}">{{ status }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button class="btn btn-default btn-round">
+        <a href="{% url 'main' %}">
+            На главную
+        </a>
+    </button>
+{% endblock %}
+
