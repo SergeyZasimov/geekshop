@@ -436,10 +436,10 @@ html, body {
 
 .basket_list span.product_cost {
     margin-left: 1em;
-    width: 7em;
+    width: 10em;
     position: relative;
     display: block;
-    float: left;
+    float: right;
 }
 
 .basket_list .basket_record {
@@ -447,6 +447,11 @@ html, body {
     display: block;
     height: 170px;
     float: none;
+}
+
+.basket_list .basket_record img {
+    width: 100px;
+    float: left;
 }
 
 .basket_container .head {
@@ -1711,4 +1716,9 @@ td:first-child {
 }
 .related-products a:hover .text{
 	display: block;
+}
+
+.order_container {
+    width: 50%;
+    margin: 0 auto;
 }
