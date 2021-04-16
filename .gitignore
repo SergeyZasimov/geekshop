@@ -1,6 +1,7 @@
+venv
+.idea
 __pycache__/
-*.swp
-.vscode/
 *.pyc
 .env
 vk.json
+db.sqlite3
