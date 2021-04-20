@@ -1,0 +1,345 @@
+http://178.21.10.168/
+
+
+    1  logout
+    2  pwd
+    3  ls
+    4  cd /home
+    5  ls
+    6  cd 
+    7  pwd
+    8  mc
+    9  cd 
+   10  psql -U postgres 
+   11  useradd -g www-data -m django
+   12  cd /home/django
+   13  ls
+   14  git clone git@github.com:SergeyZasimov/geekshop.git
+   15  ls
+   16  cd geekshop
+   17  git branch
+   18  git log
+   19  git log --oneline
+   20  git checkout origin lesson_2_5
+   21  git checkout -h
+   22  git checkout origin/lesson_2_5 lesson_2_5
+   23  git checkout origin/lesson_2_5
+   24  git checkout main
+   25  git branch
+   26  git checkout origin/lesson_2_5 -c lesson_2_5
+   27  git checkout -c origin/lesson_2_5 lesson_2_5
+   28  git checkout -b origin/lesson_2_5 lesson_2_5
+   29  git checkout -B origin/lesson_2_5 lesson_2_5
+   30  git checkout -B origin/lesson_2_5
+   31  git branch
+   32  git log --oneline
+   33  ls
+   34  cd geekshop
+   35  ls
+   36  cd geekshop
+   37  nvim settings.py
+   38  git branch -d origin/lesson_2_5
+   39  git checkout main
+   40  git branch -d origin/lesson_2_5
+   41  git branch
+   42  git checkout -b lesson2_5 origin/lesson_2_5
+   43  ls
+   44  nvim settings.py
+   45  git log --oneline
+   46  python3 -m venv env
+   47  gst
+   48  source env/bin/activate
+   49  pwd
+   50  cd ../
+   51  ls
+   52  pip install -r requirements.txt
+   53  nvim requirements.txt
+   54  pip install -r requirements.txt
+   55  apt install gcc
+   56  pip install -r requirements.txt
+   57  pip install wheel
+   58  pip install -r requirements.txt
+   59  nvim requirements.txt
+   60  pip install -r requirements.txt
+   61  pip install gunicorn
+   62  python manage.py migrate
+   63  nvim geekshop/settings.py
+   64  cd geekshop
+   65  ls
+   66  nvim vk.sample.json
+   67  nvim vk.json
+   68  python manage.py migrate
+   69  cd ../
+   70  python manage.py migrate
+   71  nvim geekshop/settings.py
+   72  cd ../
+   73  ls
+   74  cd geekshop
+   75  ls
+   76  python manage.py migrate
+   77  nvim geekshop/settings.py
+   78  python manage.py migrate
+   79  python manage.py fillDB
+   80  python manage.py runserver
+   81  python manage.py runserver 0.0.0.0:8000
+   82  nvim geekshop/settings.py
+   83  python manage.py runserver 0.0.0.0:8000
+   84  cd 
+   85  ls
+   86  cd hom
+   87  ll
+   88  cd /home
+   89  ls
+   90  cd 
+   91  chown -R django /home/django
+   92  chmod -R 755 /home/django/geekshop
+   93  cd /home/django/geekshop/geekshop
+   94  ls
+   95  python manage.py runserver 0.0.0.0:8000
+   96  pip install ipython
+   97  python manage.py shell
+   98  pwd
+   99  ls
+  100  nvim geekshop/settings.py
+  101  ls
+  102  cd media
+  103  pwd
+  104  ls
+  105  cd products_images
+  106  ls
+  107  cd ../../
+  108  ls
+  109  nvim mainapp/templates/mainapp/base.html
+  110  python manage.py runserver 0.0.0.0:8000
+  111  cd 
+  112  nvim /etc/systemd/system/gunicorn.service
+  113  cd 
+  114  cd /home/django
+  115  ls
+  116  cd geekshop
+  117  ls
+  118  ll
+  119  cd geekshop
+  120  ls
+  121  cd ../
+  122  ls
+  123  cd ../
+  124  ls
+  125  cd 
+  126  nvim /etc/systemd/system/gunicorn.service
+  127  systemstl enable gunicorn
+  128  systemctl enable gunicorn
+  129  systemctl start gunicorn
+  130  systemctl status gunicorn
+  131  nvim /etc/systemd/system/gunicorn.service
+  132  systemctl start gunicorn
+  133  systemctl status gunicorn
+  134  systemctl enable gunicorn
+  135  systemctl start gunicorn
+  136  systemctl status gunicorn
+  137  cd
+  138  ls
+  139  cd /home
+  140  ll
+  141  cd django
+  142  ll
+  143  cd geekshop
+  144  ll
+  145  cd geekshop
+  146  ll
+  147  mc
+  148  systemctl enable gunicorn
+  149  systemctl start gunicorn
+  150  systemctl status gunicorn
+  151  cd 
+  152  cd /home/django/geekshop/env/bin
+  153  ll
+  154  deac
+  155  cd ../
+  156  ls
+  157  cd../
+  158  cd ../
+  159  ls
+  160  source env/bin/activate
+  161  cd ../
+  162  ls
+  163  systemctl enable gunicorn
+  164  systemctl start gunicorn
+  165  systemctl status gunicorn
+  166  ls
+  167  cd geekshop
+  168  ls
+  169  pwd
+  170  nvim /etc/systemd/system/gunicorn.service
+  171  systemctl enable gunicorn
+  172  systemctl start gunicorn
+  173  systemctl status gunicorn
+  174  nvim /etc/systemd/system/gunicorn.service
+  175  cd
+  176  cd /home/django/geekshop
+  177  ls
+  178  cd geekshop
+  179  ls
+  180  pwd
+  181  ll
+  182  cd 
+  183  cd /home/django/geekshop/env/bin
+  184  ll
+  185  restart
+  186  reboot
+  187  cd /home
+  188  ls
+  189  logout
+  190  sudo systenctl status gunicorn
+  191  sudo systemctl status gunicorn
+  192  sudo systemctl enable gunicorn
+  193  sudo systemctl start gunicorn
+  194  sudo systemctl status gunicorn
+  195  reboot
+  196  nvim /etc/systemd/system/gunicorn.service
+  197  sudo systemctl enable gunicorn
+  198  sudo systemctl start gunicorn
+  199  sudo systemctl status gunicorn
+  200  nvim /etc/systemd/system/gunicorn.service
+  201  mc
+  202  ls
+  203  ll
+  204  ls -la
+  205  mv env/ .git .gitignore README.md geekshop
+  206  ls
+  207  cd ../
+  208  ls
+  209  cd geekshop
+  210  ls
+  211  mv geekshop/ ../
+  212  mv -rf geekshop ../
+  213  mv --help
+  214  mv geekshop ../../
+  215  cd 
+  216  cd /home
+  217  ls
+  218  cd django
+  219  ls
+  220  cd geekshop
+  221  ls
+  222  cd ../
+  223  rm -r geekshop
+  224  ls
+  225  cd ../
+  226  ls
+  227  mv geekshop/ django
+  228  ls
+  229  cd django
+  230  cd geekshop
+  231  ls
+  232  ls -la
+  233  sudo systemctl enable gunicorn
+  234  sudo systemctl start gunicorn
+  235  sudo systemctl status gunicorn
+  236  cd 
+  237  ls -la
+  238  cd ../
+  239  ls
+  240  ls -la
+  241  cd etc
+  242  ls -la
+  243  cd systemd
+  244  ls -la
+  245  cd system
+  246  ls -la
+  247  cd multi-user.target.wants
+  248  ls -la
+  249  rm gunicorn.service
+  250  ls -la
+  251  cd 
+  252  cd /home/django/geekshop
+  253  source env/bin/activate
+  254  systemctl enable gunicorn
+  255  systemctl start gunicorn
+  256  systenctl status gunicorn
+  257  systemctl status gunicorn
+  258  ls
+  259  ls env/bin
+  260  which gunicorn
+  261  apt install gunicorn
+  262  which gunicorn
+  263  pip install gunicorn
+  264  which python
+  265  which python3
+  266  deactivate
+  267  ls
+  268  rm -rf env
+  269  ls
+  270  python -m venv venv
+  271  python3 -m venv venv
+  272  ls
+  273  source venv/bin/activate
+  274  which python
+  275  nvim requirements.txt
+  276  pip install -r requirements.txt
+  277  which gunicorn
+  278  pip install gunicorn
+  279  nvim venv/bin/activate
+  280  systemctl start gunicorn
+  281  systemctl status gunicorn
+  282  nvim /etc/systemd/system/gunicorn.service
+  283  systemctl start gunicorn
+  284  systemctl daemon-reload
+  285  systemctl start gunicorn
+  286  systemctl status gunicorn
+  287  ls
+  288  rm -rf venv
+  289  ls
+  290  apt --help
+  291  apt list
+  292  apt search gunicorn
+  293  which gunicorn
+  294  apt removed gunicorn
+  295  apt remove gunicorn
+  296  deactivate
+  297  pip3 freeze
+  298  pip freeze
+  299  apt install python3-pip
+  300  pip3 freeze
+  301  pip3 --help
+  302  pip3 uninstall gunicorn
+  303  pip3 install virtualenv
+  304  virtualenv venv
+  305  source venv/bin/activate
+  306  which python
+  307  which pip
+  308  which gunicorn
+  309  pip install gunicorn
+  310  which gunicorn
+  311  pip install -r requirements.txt
+  312  which gunicorn
+  313  nvim /etc/systemd/system/gunicorn.service
+  314  systemctl start gunicorn
+  315  systemctl daemon-reload
+  316  systemctl start gunicorn
+  317  systemctl status gunicorn
+  318  nvim /etc/nginx/sites-available/geekshop
+  319  ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled
+  320  nginx -t
+  321  nvim /etc/nginx/sites-available/geekshop
+  322  nginx -t
+  323  nvim /etc/nginx/sites-available/geekshop
+  324  nginx -t
+  325  nvim /etc/nginx/sites-available/geekshop
+  326  nginx -t
+  327  systemctl status gunicorn
+  328  mc
+  329  cd 
+  330  cd /home/django/geekshop
+  331  source venv/bin/activate
+  332  systemctl restart nginx
+  333  nvim /etc/nginx/sites-available/geekshop
+  334  ls
+  335  ls media/products_images
+  336  nvim /etc/nginx/nginx.conf
+  337  nvim /etc/nginx/mime.types
+  338  ls
+  339  mc
+  340  nvim /etc/nginx/sites-available/geekshop
+  341  systemctl restart nginx
+  342  history
