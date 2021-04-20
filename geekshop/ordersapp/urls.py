@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete/<int:pk>/', ordersapp.OrderDeleteView.as_view(), name='order_delete'),
     path('forming/complete/<int:pk>/', ordersapp.order_forming_complete, name='order_forming_complete'),
     path('get_status/<int:pk>/<str:status>/', ordersapp.get_status, name='get_status'),
+    path('product/<int:pk>/price/', ordersapp.get_product_price),
 ]

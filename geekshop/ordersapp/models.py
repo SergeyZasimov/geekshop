@@ -1,4 +1,3 @@
-# b:is_django
 from django.db import models
 from django.conf import settings
 
@@ -45,7 +44,7 @@ class Order(models.Model):
 
     def get_total_quantity(self):
         items = self.orderitems.select_related()
-        return len(items)
+        return sum(list(map(lambda x: x.quantity, items)))
 
     def get_total_cost(self):
         items = self.orderitems.select_related()
@@ -75,3 +74,7 @@ class OrderItems(models.Model):
 
     def get_product_cost(self):
         return self.product.price * self.quantity
+
+    @staticmethod
+    def get_item(pk):
+        return OrderItems.objects.get(pk=pk)

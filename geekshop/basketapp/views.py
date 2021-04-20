@@ -26,7 +26,7 @@ def basket(request):
 
 @login_required
 def basket_add(request, pk):
-    
+
     product_item = get_object_or_404(Product, pk=pk)
 
     basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
