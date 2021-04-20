@@ -4,4 +4,3 @@ __pycache__/
 *.pyc
 .env
 vk.json
-db.sqlite3
