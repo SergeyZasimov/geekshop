@@ -24,7 +24,7 @@ SECRET_KEY = 'd_8+a0bqwe1*+=)$8oex$hry0k1u6mp%q&cip5&)=!oqs+smg6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# DEBUG = False
+#DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -91,15 +91,15 @@ WSGI_APPLICATION = 'geekshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-    # 'DEFAULT': {
-    #     'NAME': 'geekshop',
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'USER': 'postgres',
-    # }
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+     'default': {
+         'NAME': 'geekshop',
+         'ENGINE': 'django.db.backends.postgresql',
+         'USER': 'postgres',
+     }
 }
 
 # Password validation
@@ -165,9 +165,11 @@ if DEBUG:
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    BASE_DIR / 'static',
-)
+# STATICFILES_DIRS = (
+#     BASE_DIR / 'static',
+# )
+
+STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 
