@@ -25,3 +25,4 @@ ipython
 django-debug-toolbar
 django-debug-toolbar-template-profiler
 django-extensions
+pydotplus
