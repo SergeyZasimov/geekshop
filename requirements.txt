@@ -24,3 +24,4 @@ urllib3==1.26.4
 ipython
 django-debug-toolbar
 django-debug-toolbar-template-profiler
+django-extensions
