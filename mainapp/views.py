@@ -18,7 +18,7 @@ social_links = [
 ]
 
 
-#def get_basket(user):
+# def get_basket(user):
 #    if user.is_authenticated:
 #        return Basket.objects.filter(user=user)
 #        #basket = sum(list(Basket.objects.filter(user=request.user).values_list('quantity', flat=True)))
@@ -36,22 +36,20 @@ def get_same_products(hot_product):
 
 
 def main(request):
-
-    products = Product.objects.all()[:3]
+    products = Product.objects.filter(is_active=True, category__is_active=True).select_related('category')[:3]
 
     context = {
-            'title': "главная",
-            'social_links': social_links,
-            'products': products,
-            #'basket': get_basket(request.user),
-            }
+        'title': "главная",
+        'social_links': social_links,
+        'products': products,
+        # 'basket': get_basket(request.user),
+    }
 
     return render(request, 'mainapp/index.html', context)
 
 
 def products(request, pk=None, page=1):
-
-    title =  "продукты"
+    title = "продукты"
 
     links_menu = ProductCategory.objects.all()
 
@@ -63,7 +61,6 @@ def products(request, pk=None, page=1):
             category_item = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category=category_item)
 
-
         paginator = Paginator(products, 2)
 
         try:
@@ -73,59 +70,57 @@ def products(request, pk=None, page=1):
         except EmptyPage:
             products_paginator = paginator.page(paginator.num_pages)
 
-
         content = {
             'title': title,
             'links_menu': links_menu,
             'social_links': social_links,
             'category': category_item,
             'products': products_paginator,
-            #'basket': get_basket(request.user),
+            # 'basket': get_basket(request.user),
         }
-        
-        return render(request, 'mainapp/products_list.html', content)
 
+        return render(request, 'mainapp/products_list.html', content)
 
     hot_product = get_hot_product()
     products = get_same_products(hot_product)
     context = {
-            'links_menu': links_menu,
-            'social_links': social_links,
-            'hot_product': hot_product,
-            'products': products,
-            #'basket': get_basket(request.user),
-            }
+        'links_menu': links_menu,
+        'social_links': social_links,
+        'hot_product': hot_product,
+        'products': products,
+        # 'basket': get_basket(request.user),
+    }
 
     return render(request, 'mainapp/products.html', context)
 
+
 def product(request, pk):
-    
     links_menu = ProductCategory.objects.all()
 
     content = {
         'title': 'продукт',
         'product': get_object_or_404(Product, pk=pk),
-        #'basket': get_basket(request.user),
+        # 'basket': get_basket(request.user),
         'links_menu': links_menu,
         'social_links': social_links,
     }
 
     return render(request, 'mainapp/product.html', content)
 
+
 def contact(request):
-    file_path = settings.BASE_DIR / 'static' / 'data'  /'locations.json'
-    
+    file_path = settings.BASE_DIR / 'static' / 'data' / 'locations.json'
+
     locations = []
 
     with open(file_path, encoding='utf8') as f:
         locations = json.load(f)
 
-
     context = {
-            'title': "контакты",
-            'social_links': social_links,
-            'locations': locations,
-            #'basket': get_basket(request.user),
-            }
+        'title': "контакты",
+        'social_links': social_links,
+        'locations': locations,
+        # 'basket': get_basket(request.user),
+    }
 
     return render(request, 'mainapp/contact.html', context)
