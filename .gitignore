@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 .env
 vk.json
+shell_commands.sh
