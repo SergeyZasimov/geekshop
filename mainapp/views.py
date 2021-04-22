@@ -26,12 +26,12 @@ social_links = [
 
 
 def get_hot_product():
-    product_list = Product.objects.all()
+    product_list = Product.objects.all().select_related()
     return random.sample(list(product_list), 1)[0]
 
 
 def get_same_products(hot_product):
-    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
+    same_products = Product.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk).select_related()[:3]
     return same_products
 
 
@@ -59,7 +59,7 @@ def products(request, pk=None, page=1):
             category_item = {'name': 'все', 'pk': 0}
         else:
             category_item = get_object_or_404(ProductCategory, pk=pk)
-            products = Product.objects.filter(category=category_item)
+            products = Product.objects.filter(category=category_item).select_related()
 
         paginator = Paginator(products, 2)
 

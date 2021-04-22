@@ -14,7 +14,7 @@ from basketapp.models import Basket
 
 @login_required()
 def basket(request):
-    basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+    basket_items = Basket.objects.filter(user=request.user).order_by('product__category').select_related()
 
     context = {
         'title': 'корзина',
@@ -29,7 +29,7 @@ def basket_add(request, pk):
 
     product_item = get_object_or_404(Product, pk=pk)
 
-    basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
+    basket_item = Basket.objects.filter(product=product_item, user=request.user).first().select_related()
 
     if not basket_item:
         basket_item = Basket(user=request.user, product=product_item)
@@ -62,7 +62,7 @@ def basket_edit(request, pk, quantity):
         else:
             new_basket_item.delete()
 
-        basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+        basket_items = Basket.objects.filter(user=request.user).order_by('product__category').select_related()
 
         content = {
             'basket_items': basket_items,
