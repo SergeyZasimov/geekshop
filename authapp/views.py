@@ -3,18 +3,20 @@ from django.conf import settings
 from django.contrib import auth
 from django.urls import reverse
 from django.shortcuts import render, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 
 from authapp.models import ShopUser
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 
+
 # Create your views here.
 
+# @csrf_exempt
 def login(request):
-    
     login_form = ShopUserLoginForm(data=request.POST or None)
 
     next = request.GET.get('next', None)
-    
+
     if request.method == 'POST' and login_form.is_valid():
         username = request.POST['username']
         password = request.POST['password']
@@ -30,7 +32,7 @@ def login(request):
         'login_form': login_form,
         'next': next,
     }
-    
+
     return render(request, 'authapp/login.html', content)
 
 
@@ -40,7 +42,6 @@ def logout(request):
 
 
 def register(request):
-    
     if request.method == 'POST':
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
         if register_form.is_valid():
@@ -52,7 +53,6 @@ def register(request):
             return HttpResponseRedirect(reverse('auth:login'))
     else:
         register_form = ShopUserRegisterForm()
-
 
     content = {
         'title': 'регистрация',
@@ -71,7 +71,6 @@ def edit(request):
     else:
         edit_form = ShopUserEditForm(instance=request.user)
         profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
-        
 
     content = {
         'title': 'редактирование',
@@ -89,6 +88,7 @@ def send_verify_email(user):
     message = f'Ссылка для активации: {settings.BASE_URL}{verify_link}'
 
     return send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=True)
+
 
 def verify(request, email, activation_key):
     user = ShopUser.objects.get(email=email)
