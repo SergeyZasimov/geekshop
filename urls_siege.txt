@@ -1,7 +1,7 @@
 http://178.21.10.168/
 http://178.21.10.168/products/
-http://178.21.10.168/contact/
 http://178.21.10.168/products/0/
-http://178.21.10.168/products/1/
-http://178.21.10.168/products/product/2/
-http://178.21.10.168/products/product/6/
+http://178.21.10.168/contact/
+http://178.21.10.168/basket/
+http://178.21.10.168/order/
+http://178.21.10.168/order/update/2/
