@@ -29,7 +29,7 @@ def basket_add(request, pk):
 
     product_item = get_object_or_404(Product, pk=pk)
 
-    basket_item = Basket.objects.filter(product=product_item, user=request.user).first().select_related()
+    basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
 
     if not basket_item:
         basket_item = Basket(user=request.user, product=product_item)
