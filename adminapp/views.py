@@ -1,18 +1,22 @@
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import user_passes_test
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.utils.decorators import method_decorator
 
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from django.db import connection
+
 from authapp.models import ShopUser
 from authapp.forms import ShopUserRegisterForm
+
 from mainapp.models import ProductCategory, Product
+
 from adminapp.forms import ShopUserAdminEditForm, ProductEditForm, ProductCategoryEditForm
 
 from ordersapp.models import Order
-
-# Create your views here.
 
 
 # User
@@ -67,7 +71,7 @@ class UserDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 
-#Category
+# Category
 class ProductCategoryCreateView(CreateView):
     model = ProductCategory
     template_name = 'adminapp/category_update.html'
@@ -126,7 +130,7 @@ class ProductCategoryDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 
-#Product
+# Product
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'adminapp/product_read.html'
@@ -226,3 +230,20 @@ class ProductDeleteView(DeleteView):
 class OrdersListView(ListView):
     model = Order
     template_name = 'adminapp/orders_list.html'
+
+
+def db_profile_by_type(prefix, type, queries):
+    update_queries = list(filter(lambda x: type in x['sql'], queries))
+    print(f'db_profile {type} for {prefix}:')
+    [print(query['sql']) for query in update_queries]
+
+
+@receiver(pre_save, sender=ProductCategory)
+def product_is_active_update_productcategory_save(sender, instance, **kwargs):
+    if instance.pk:
+        if instance.is_active:
+            instance.product_set.update(is_active=True)
+        else:
+            instance.product_set.update(is_active=False)
+
+        db_profile_by_type(sender, 'UPDATE', connection.queries)
