@@ -43,3 +43,49 @@ class TestMainappSmoke(TestCase):
 
     def tearDown(self):
         pass
+
+
+class ProductsModelsTestCase(TestCase):
+    """
+    Тестирование методов моделей
+    """
+
+    def setUp(self):
+        category = ProductCategory.objects.create(name='столы')
+        self.product1 = Product.objects.create(name='стол 1',
+                                               category=category,
+                                               price=1000.5,
+                                               quantity=5)
+
+        self.product2 = Product.objects.create(name='стол 2',
+                                               category=category,
+                                               price=2000.1,
+                                               quantity=4,
+                                               is_active=False)
+
+        self.product3 = Product.objects.create(name='стол 3',
+                                               category=category,
+                                               price=3000.5,
+                                               quantity=1)
+
+    def test_products_get(self):
+        prod1 = Product.objects.get(name='стол 1')
+        prod2 = Product.objects.get(name='стол 2')
+
+        self.assertEqual(prod1, self.product1)
+        self.assertEqual(prod2, self.product2)
+
+    def test_product_print(self):
+        prod1 = Product.objects.get(name='стол 1')
+        prod2 = Product.objects.get(name='стол 2')
+
+        self.assertEqual(str(prod1), 'стол 1 (столы)')
+        self.assertEqual(str(prod2), 'стол 2 (столы)')
+
+    def test_products_get_item(self):
+        prod1 = Product.objects.get(name='стол 1')
+        prod3 = Product.objects.get(name='стол 3')
+        products = prod1.get_items()
+
+        self.assertEqual(list(products), [prod1, prod3])
+
