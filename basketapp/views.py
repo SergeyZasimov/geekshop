@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
@@ -34,7 +35,7 @@ def basket_add(request, pk):
     if not basket_item:
         basket_item = Basket(user=request.user, product=product_item)
 
-    basket_item.quantity += 1
+    basket_item.quantity =F('quantity') + 1
     basket_item.save()
 
     if 'login' in request.META.get('HTTP_REFERER'):
